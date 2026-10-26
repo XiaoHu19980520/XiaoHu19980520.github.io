@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Xiao Hu</title>
+<meta name="description" content="Xiao Hu, Ph.D. student in Computer Science at The University of Texas at Arlington, SMILE Lab.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --ink: #15213a;
+  --muted: #58647b;
+  --line: #dce3ec;
+  --accent: #0064b1;
+  --accent-2: #d9661c;
+  --chip: #e7eff9;
+  --font-display: "Source Serif 4", "Iowan Old Style", Georgia, serif;
+  --font-body: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0f1623; --surface: #161f30; --ink: #e5ebf4; --muted: #9ca8bd;
+    --line: #273348; --accent: #63adec; --accent-2: #f2995a; --chip: #1c2c45;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0f1623; --surface: #161f30; --ink: #e5ebf4; --muted: #9ca8bd;
+  --line: #273348; --accent: #63adec; --accent-2: #f2995a; --chip: #1c2c45;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.6; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.wrap {
+  max-width: 1060px; margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 56px 72px;
+  display: grid; grid-template-columns: 250px minmax(0, 1fr); gap: 64px;
+}
+.id { position: sticky; top: calc(32px + env(safe-area-inset-top, 0px)); align-self: start; display: grid; gap: 18px; }
+.photo { position: relative; width: 100%; max-width: 220px; aspect-ratio: 1; border-radius: 16px; overflow: hidden; background: var(--chip); display: grid; place-items: center; }
+.photo span { font-family: var(--font-display); font-size: 64px; color: var(--accent); }
+.photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.id h1 { font-family: var(--font-display); font-weight: 600; font-size: 34px; line-height: 1.15; margin: 0; }
+.role { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.5; }
+.role b { color: var(--ink); font-weight: 600; }
+.links { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; font-size: 15px; }
+.links li { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.links .k { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); width: 58px; flex: none; }
+.links .v { min-width: 0; overflow-wrap: anywhere; }
+.copy { font: inherit; font-size: 12px; color: var(--muted); background: none; border: 1px solid var(--line); border-radius: 6px; padding: 1px 8px; cursor: pointer; flex: none; }
+.copy:hover { color: var(--ink); border-color: var(--muted); }
+main { min-width: 0; display: grid; gap: 44px; }
+section { display: grid; gap: 14px; }
+h2 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin: 0; padding-bottom: 8px; border-bottom: 1px solid var(--line); display: flex; align-items: center; gap: 10px; }
+h2::before { content: ""; width: 8px; height: 8px; background: var(--accent-2); border-radius: 2px; }
+p { margin: 0; max-width: 66ch; }
+.lead { font-size: 17px; }
+.tags { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.tags li { background: var(--chip); color: var(--ink); font-size: 14px; padding: 4px 12px; border-radius: 999px; }
+.news { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
+.news li { display: grid; grid-template-columns: 84px minmax(0, 1fr); gap: 16px; }
+.news time { font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; padding-top: 2px; }
+.pubs { list-style: none; margin: 0; padding: 0; display: grid; gap: 22px; }
+.pub { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; }
+.venue { align-self: start; font-family: var(--font-mono); font-size: 12px; line-height: 1.3; text-align: center; color: var(--accent); background: var(--chip); border-radius: 6px; padding: 6px 4px; }
+.pub .t { font-family: var(--font-display); font-weight: 600; font-size: 18px; line-height: 1.35; text-wrap: balance; }
+.pub .a { color: var(--muted); font-size: 14.5px; margin-top: 3px; }
+.pub .a .me { color: var(--ink); font-weight: 600; }
+.pub .m { font-size: 14px; margin-top: 4px; display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.pub .m em { color: var(--muted); font-style: italic; }
+.first { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-2); }
+.rows { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 16px; }
+.rows .what { font-weight: 600; }
+.rows .sub { grid-column: 1; color: var(--muted); font-size: 15px; }
+.rows .when { grid-column: 2; grid-row: 1; font-family: var(--font-mono); font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; padding-top: 3px; }
+footer { color: var(--muted); font-size: 13px; }
+@media (max-width: 780px) {
+  .wrap { grid-template-columns: minmax(0, 1fr); gap: 40px; padding-block: 32px 56px; }
+  .id { position: static; grid-template-columns: 112px minmax(0, 1fr); align-items: center; gap: 12px 18px; }
+  .photo { max-width: 112px; border-radius: 12px; }
+  .photo span { font-size: 36px; }
+  .id .head { display: grid; gap: 6px; }
+  .id h1 { font-size: 28px; }
+  .links { grid-column: 1 / -1; }
+  .pub, .news li { grid-template-columns: minmax(0, 1fr); gap: 6px; }
+  .venue { justify-self: start; padding: 3px 8px; }
+  .rows li { grid-template-columns: minmax(0, 1fr); }
+  .rows .when { grid-column: 1; grid-row: auto; padding-top: 0; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <aside class="id">
+    <div class="photo">
+      <span aria-hidden="true">XH</span>
+      <img src="profile.jpg" alt="Portrait of Xiao Hu" onerror="this.remove()">
+    </div>
+    <div class="head">
+      <h1>Xiao Hu</h1>
+      <p class="role"><b>Ph.D. Student</b>, Computer Science<br>SMILE Lab, The University of Texas at Arlington</p>
+    </div>
+    <ul class="links">
+      <li><span class="k">Email</span><span class="v" id="email">xxh3416@mavs.uta.edu</span><button class="copy" id="copy-email" type="button">Copy</button></li>
+      <li><span class="k">Scholar</span><a class="v" href="https://scholar.google.com/citations?user=QH1OhSoAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a></li>
+      <li><span class="k">LinkedIn</span><a class="v" href="https://www.linkedin.com/in/xiao-hu-359309304/" target="_blank" rel="noopener">LinkedIn</a></li>
+      <li><span class="k">Lab</span><a class="v" href="https://ranger.uta.edu/~huang/" target="_blank" rel="noopener">SMILE Lab</a></li>
+      <li><span class="k">Where</span><span class="v">Arlington, TX</span></li>
+    </ul>
+  </aside>
+  <main>
+    <section id="about">
+      <h2>About</h2>
+      <p class="lead">I am a Ph.D. student in Computer Science at The University of Texas at Arlington. Since September 2025 I have been a member of the SMILE Lab, advised by <a href="https://ranger.uta.edu/~huang/" target="_blank" rel="noopener">Prof. Junzhou Huang</a>.</p>
+      <p>My research focuses on multimodal machine learning for healthcare: combining clinical records, pathology, laboratory tests, diagnostic codes, and free-text reports to predict patient outcomes, and measuring how much each data source contributes for an individual patient. Before UTA, I was a visiting scholar in Mechanical Engineering at UC Berkeley, and I received my M.S. in Data Science from the University at Buffalo.</p>
+    </section>
+    <section id="interests">
+      <h2>Research interests</h2>
+      <ul class="tags">
+        <li>Multimodal learning</li>
+        <li>Clinical outcome prediction</li>
+        <li>Modality importance &amp; interpretability</li>
+        <li>Medical image analysis</li>
+        <li>Computational biology</li>
+      </ul>
+    </section>
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news">
+        <li><time>2026</time><span>GAMI accepted to <b>IEEE BIBM 2026</b> as first author.</span></li>
+        <li><time>2026</time><span>Paper on held-out-gene yeast knockout fitness prediction accepted to <b>IEEE BIBM 2026</b>.</span></li>
+        <li><time>2026</time><span>Paper on survival classification with missing modalities accepted to <b>MIDL 2026</b>.</span></li>
+        <li><time>Sep 2025</time><span>Joined the SMILE Lab at UT Arlington.</span></li>
+      </ul>
+    </section>
+    <section id="publications">
+      <h2>Publications</h2>
+      <ol class="pubs">
+        <li class="pub">
+          <span class="venue">BIBM<br>2026</span>
+          <div>
+            <div class="t">GAMI: Gradient-Aligned Modality Importance for Multimodal Cancer Outcome Prediction</div>
+            <div class="a"><span class="me">X. Hu</span>, Y. Guo, Z. Zheng, W. Zhong, H. Li, Y. Miao, J. Yan, H. Ma, Y. Wu, J. Huang</div>
+            <div class="m"><em>IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 2026</em><span class="first">First author</span></div>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="venue">BIBM<br>2026</span>
+          <div>
+            <div class="t">Held-Out-Gene Yeast Knockout Fitness Prediction with Gene-Level Biological Features</div>
+            <div class="a">Z. Zheng, Y. Miao, <span class="me">X. Hu</span>, H. Ma, Y. Guo, S. Zhang, L. Xu, J. Huang</div>
+            <div class="m"><em>IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 2026</em><a href="https://github.com/uta-smile/Yeast-KO-Fitness" target="_blank" rel="noopener">Code</a></div>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="venue">MIDL<br>2026</span>
+          <div>
+            <div class="t">Heterogeneous Aligned Fusion for Survival Classification with Missing Modalities</div>
+            <div class="a">Z. Zheng, Y. Guo, <span class="me">X. Hu</span>, Y. Miao, H. Ma, J. Gao, J. Huang</div>
+            <div class="m"><em>Medical Imaging with Deep Learning (MIDL), 2026</em></div>
+          </div>
+        </li>
+        <li class="pub">
+          <span class="venue">World<br>Neurosurg.<br>2024</span>
+          <div>
+            <div class="t">Deep Learning-Based Segmentation of Cervical Posterior Longitudinal Ligament Ossification in Computed Tomography Images and Assessment of Spinal Cord Compression: A Two-Center Study</div>
+            <div class="a">B. Jiang, J. Yan, S. Xu, <span class="me">X. Hu</span>, et al.</div>
+            <div class="m"><em>World Neurosurgery, 2024</em><a href="https://www.sciencedirect.com/science/article/pii/S1878875024020175" target="_blank" rel="noopener">Paper</a></div>
+          </div>
+        </li>
+      </ol>
+    </section>
+    <section id="education">
+      <h2>Education</h2>
+      <ul class="rows">
+        <li><span class="what">The University of Texas at Arlington</span><span class="when">Sep 2024 – present</span><span class="sub">Ph.D. in Computer Science</span></li>
+        <li><span class="what">University of California, Berkeley</span><span class="when">Aug 2023 – Aug 2024</span><span class="sub">Visiting Scholar, Mechanical Engineering</span></li>
+        <li><span class="what">University at Buffalo, The State University of New York</span><span class="when">Jan 2022 – May 2023</span><span class="sub">M.S. in Data Science</span></li>
+        <li><span class="what">Miami University</span><span class="when">Aug 2016 – Dec 2021</span><span class="sub">B.S. in Computer and Information Science</span></li>
+      </ul>
+    </section>
+    <section id="experience">
+      <h2>Experience</h2>
+      <ul class="rows">
+        <li><span class="what">SMILE Lab, UT Arlington</span><span class="when">Sep 2025 – present</span><span class="sub">Graduate Research Assistant, multimodal learning for cancer outcome prediction</span></li>
+        <li><span class="what">UC Berkeley</span><span class="when">Oct 2023 – Feb 2024</span><span class="sub">Gesture recognition and reaction-time testing with an Arduino Nano BLE Sense and on-device machine learning</span></li>
+        <li><span class="what">Tencent Music</span><span class="when">Jul 2021 – Aug 2021</span><span class="sub">Hypermedia Department, user preference analysis and front-end development</span></li>
+      </ul>
+    </section>
+    <footer>Last updated October 2026.</footer>
+  </main>
+</div>
+<script>
+  (function () {
+    var btn = document.getElementById('copy-email');
+    var email = document.getElementById('email');
+    btn.addEventListener('click', function () {
+      var text = email.textContent;
+      function selectIt() {
+        var r = document.createRange(); r.selectNodeContents(email);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = 'Copy'; }, 1500); }, selectIt);
+      } else { selectIt(); }
+    });
+  })();
+</script>
+</body>
+</html>
